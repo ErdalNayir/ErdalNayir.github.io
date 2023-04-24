@@ -5,7 +5,6 @@ function Resume() {
   return (
     <div className="flex flex-row">
       <SideBar></SideBar>
-      <p>sfhjbfbfjkdfknbvjkfnbjkfnb</p>
     </div>
   );
 }
