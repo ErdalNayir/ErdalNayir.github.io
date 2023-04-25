@@ -1,16 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const commentSlice = createSlice({
-  name: "commentLines",
+  name: "cmmtSlc",
   initialState: {
     commentLines: {
-      linkedln: "// var result = infos.linkedln",
-      github: "// var result = infos.github",
-      cycamp: "// var result = infos.cycamp",
-      eachecek: "// var result = infos.eachecek",
-      webapi: "// var result = infos.webapi",
-      weather: "// var result = infos.weather",
-      game: "// var result = infos.game",
+      linkedln: "//",
+      github: "//",
+      cycamp: "//",
+      eachecek: "//",
+      webapi: "//",
+      weather: "//",
+      note: "//",
+      mapDet: "//",
+    },
+    LinesText: {
+      linkedln: "var result = infos.linkedln",
+      github: "var result = infos.github",
+      cycamp: "var result = infos.cycamp",
+      eachecek: "var result = infos.eachecek",
+      webapi: "var result = infos.webapi",
+      weather: "var result = infos.weather",
+      note: "var result = infos.stickyNote",
+      mapDet: "var result = infos.mapDetective",
     },
   },
   reducers: {
@@ -22,5 +33,5 @@ export const commentSlice = createSlice({
   },
 });
 
-export const { reduceLine, increaseLine } = commentSlice.actions;
+export const { updateLine } = commentSlice.actions;
 export default commentSlice.reducer;
