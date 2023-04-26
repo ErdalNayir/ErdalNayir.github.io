@@ -7,12 +7,14 @@ import { updateLine } from "../Redux/EditorSlice/editorSlice";
 import ToastView from "../components/ToastView";
 import { toast } from "react-toastify";
 import { urls } from "../data";
-import { AnalyticsEventTracker } from "../analytics/AnalyticsEventTracker";
+import useAnalyticsEventTracker from "../analytics/AnalyticsEventTracker";
 
 function Editor() {
   const dispatcher = useDispatch();
   const data = useSelector((state) => state.cmmtSlc.commentLines);
   const dataText = useSelector((state) => state.cmmtSlc.LinesText);
+
+  const eventTracker = useAnalyticsEventTracker();
 
   const [text, setText] = useState(dataText);
   const [isnUnComment, setUncomment] = useState(false);
@@ -41,7 +43,7 @@ function Editor() {
     } else if (count === 1) {
       Object.keys(data).map((key) =>
         data[key] === ""
-          ? AnalyticsEventTracker("url", key, "Editor_Command") &
+          ? eventTracker("url", key, "Editor_Command") &
             window.open(urls[key], "_blank", "noreferrer")
           : ""
       );
