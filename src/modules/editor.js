@@ -41,12 +41,12 @@ function Editor() {
         theme: "light",
       });
     } else if (count === 1) {
-      Object.keys(data).map((key) =>
-        data[key] === ""
-          ? eventTracker("url", key, "Editor_Command") &
-            window.open(urls[key], "_blank", "noreferrer")
-          : ""
-      );
+      Object.keys(data).map((key) => {
+        if (data[key] === "") {
+          eventTracker("url", key, "Editor_Command");
+          window.open(urls[key], "_blank", "noreferrer");
+        }
+      });
     } else {
       toast.error("UndefinedVariableError:Result is not defined", {
         position: "top-left",
