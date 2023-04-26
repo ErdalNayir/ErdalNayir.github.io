@@ -15,8 +15,8 @@ function SideBar() {
         <Icon icon="cib:kaggle" color="white" fontSize={28} />
       </a>
       <a
-        href="./ErdalNayirCV.pdf"
-        download={"ErdalNayirCV.pdf"}
+        href="./doc/ErdalNayirResume.pdf"
+        download={"ErdalNayirResume.pdf"}
         target="_blank"
         rel="noreferrer">
         <Icon icon="mdi:resume" color="white" fontSize={28} />
