@@ -2,12 +2,16 @@ import "./App.css";
 import Editor from "./modules/editor";
 import Resume from "./modules/resume";
 import ReactGA from "react-ga";
+import { useEffect } from "react";
 
 const TRACKING_ID = "G-966Z2T6TGE"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <div>
       <Resume></Resume>
