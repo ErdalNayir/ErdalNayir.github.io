@@ -4,7 +4,7 @@ import Resume from "./modules/resume";
 import ReactGA from "react-ga";
 import { useEffect } from "react";
 
-const TRACKING_ID = "G-966Z2T6TGE"; // OUR_TRACKING_ID
+const TRACKING_ID = ""; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
