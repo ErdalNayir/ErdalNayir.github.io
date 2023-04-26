@@ -67,7 +67,7 @@ function Editor() {
   return (
     <div>
       <ToastView></ToastView>
-      <div className="fixed w-[50vw] h-[100vh] editorBackground text-white    bottom-0 right-0 pt-40 lg:hidden lg:transition  duration-300">
+      <div className="fixed w-[50vw] h-[100vh] lg:w-[0vw] lg:h-[0vh] editorBackground text-white    bottom-0 right-0 pt-40 lg:hidden lg:transition  duration-300">
         <div className="text-sm font-sans fixed top-0 tabColor text-sm flex flex-row items-center">
           <hr className=" lineColor border-[1.8px]" />
           <p className="p-2 pb-[1px]   font-bold">

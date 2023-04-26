@@ -1,27 +1,27 @@
 import React from "react";
 import SideBar from "../components/sideBar";
-import { imgData } from "../data";
+import Technologies from "../components/technologies";
 
 function Resume() {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row overflow-hidden	">
       <SideBar></SideBar>
-      <div className="ml-16">
+      <div className="ml-16 lg:mt-8 lg:ml-0">
         <div className="flex flex-row  gap-x-32  lg:transition-shadow  duration-300">
           <div className="mt-16 ml-4  lg:transition-shadow flex-1 duration-300">
             <h2 className="text-4xl ">Erdal NAYİR</h2>
             <p className="font-bold mt-4 mb-2 text-sm">
               Software Engineer Candidate
             </p>
-            <p className="w-80">
+            <div className="w-80 lg:w-full">
               I am 3rd grade computer science student at Bursa Technical
               University. I love experiencing new technologies. I spend the most
               of my time with activities that improve my current skills and
               knowledge.
-            </p>
+            </div>
           </div>
           <img
-            className="mt-8 mr-16 lg:transition-shadow flex-2 duration-300"
+            className="mt-8 mr-16 lg:transition-shadow lg:hidden flex-2 duration-300"
             src={require("../assets/images/photo_2021-12-29_16-26-58.jpg")}
             alt="profile "
             height={"200px"}
@@ -39,8 +39,10 @@ function Resume() {
               width={"50px"}
               alt="Btu Logo"></img>
             <div>
-              <p className="font-bold text-lg">
-                Bursa Technical University, Computer Engineering
+              <p className="font-bold text-lg lg:text-md">
+                Bursa Technical University,
+                <span className="lg:hidden"> Computer Engineering</span>
+                <span className="hidden lg:inline"> C.E.</span>
               </p>
               <p className="text-gray-500">GPA: 3.42</p>
             </div>
@@ -59,14 +61,14 @@ function Resume() {
             <div>
               <p className="font-bold text-lg">
                 MOSK Bilişim, Intern{" "}
-                <span className="text-white text-sm ml-4 bg-teal-400 pl-2 pr-2 rounded-2xl">
+                <span className="text-white text-sm ml-4 bg-teal-400  lg:hidden pl-2 pr-2 rounded-2xl">
                   onsite
                 </span>
               </p>
-              <p className=" text-gray-500 indent-4 w-[35rem]">
+              <div className=" text-gray-500 indent-4 w-[36rem] lg:w-full">
                 I have created frontend side of GIS app. I have used leaflet.js,
                 react.js while creating the app
-              </p>
+              </div>
             </div>
           </div>
           <div className="mt-8 flex flex-row gap-x-4">
@@ -78,53 +80,23 @@ function Resume() {
             <div>
               <p className="font-bold text-lg">
                 Tubitak Project, Scholarship{" "}
-                <span className="text-white text-sm ml-4 bg-red-400 pl-2 pr-2 rounded-2xl">
+                <span className="text-white text-sm ml-4 lg:hidden bg-red-400 pl-2 pr-2 rounded-2xl">
                   remote
                 </span>
               </p>
-              <p className=" text-gray-500 indent-4 w-[35rem]">
+              <div className=" text-gray-500 indent-4 w-[35rem] lg:w-full">
                 I am part of the project. My role in the project is creating
-                academic reports, creating academic summarization, searching
-                similar patents. I have been tasked with all those problem and
-                expected to use english
-              </p>
+                academic reports{" "}
+                <span className="lg:hidden">
+                  creating academic summarization, searching similar patents. I
+                  have been tasked with all those problem and expected to use
+                  english
+                </span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="ml-2 mt-12 mr-8 mb-16">
-          <u>
-            <h2 className=" font-bold text-2xl mb-6">Technologies</h2>
-          </u>
-
-          <div className="mt-4 flex flex-row gap-x-4">
-            {Object.keys(imgData).map((key, index) =>
-              index < 12 ? (
-                <img
-                  key={key}
-                  src={imgData[key]}
-                  height={"30px"}
-                  width={"40px"}
-                  alt={key}></img>
-              ) : (
-                ""
-              )
-            )}
-          </div>
-          <div className="mt-4 flex flex-row gap-x-4">
-            {Object.keys(imgData).map((key, index) =>
-              index >= 12 ? (
-                <img
-                  key={key}
-                  src={imgData[key]}
-                  height={"30px"}
-                  width={"40px"}
-                  alt={key}></img>
-              ) : (
-                ""
-              )
-            )}
-          </div>
-        </div>
+        <Technologies></Technologies>
       </div>
     </div>
   );
