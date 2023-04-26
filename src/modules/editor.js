@@ -7,6 +7,7 @@ import { updateLine } from "../Redux/EditorSlice/editorSlice";
 import ToastView from "../components/ToastView";
 import { toast } from "react-toastify";
 import { urls } from "../data";
+import { AnalyticsEventTracker } from "../analytics/AnalyticsEventTracker";
 
 function Editor() {
   const dispatcher = useDispatch();
@@ -39,7 +40,10 @@ function Editor() {
       });
     } else if (count === 1) {
       Object.keys(data).map((key) =>
-        data[key] === "" ? window.open(urls[key], "_blank", "noreferrer") : ""
+        data[key] === ""
+          ? AnalyticsEventTracker("url", key, "Editor_Command") &
+            window.open(urls[key], "_blank", "noreferrer")
+          : ""
       );
     } else {
       toast.error("UndefinedVariableError:Result is not defined", {
