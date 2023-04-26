@@ -59,12 +59,7 @@ function Resume() {
               width={"50px"}
               alt="Mosk Bilişim"></img>
             <div>
-              <p className="font-bold text-lg">
-                MOSK Bilişim, Intern{" "}
-                <span className="text-white text-sm ml-4 bg-teal-400  lg:hidden pl-2 pr-2 rounded-2xl">
-                  onsite
-                </span>
-              </p>
+              <p className="font-bold text-lg">MOSK Bilişim, Intern </p>
               <div className=" text-gray-500 indent-4 w-[36rem] lg:w-full">
                 I have created frontend side of GIS app. I have used leaflet.js,
                 react.js while creating the app
@@ -78,12 +73,7 @@ function Resume() {
               width={"50px"}
               alt="Tubitak"></img>
             <div>
-              <p className="font-bold text-lg">
-                Tubitak Project, Scholarship{" "}
-                <span className="text-white text-sm ml-4 lg:hidden bg-red-400 pl-2 pr-2 rounded-2xl">
-                  remote
-                </span>
-              </p>
+              <p className="font-bold text-lg">Tubitak Project, Scholarship </p>
               <div className=" text-gray-500 indent-4 w-[35rem] lg:w-full">
                 I am part of the project. My role in the project is creating
                 academic reports{" "}
