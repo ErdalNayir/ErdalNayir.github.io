@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.42096e13.css",
+    "main.js": "/static/js/main.1af04c09.js",
+    "static/js/787.b45c6ab0.chunk.js": "/static/js/787.b45c6ab0.chunk.js",
+    "static/media/btuLogo.jpg": "/static/media/btuLogo.51b7c45cc71953275f08.jpg",
+    "static/media/photo_2021-12-29_16-26-58.jpg": "/static/media/photo_2021-12-29_16-26-58.2f0605072b8ccb82a4c3.jpg",
+    "index.html": "/index.html",
+    "main.42096e13.css.map": "/static/css/main.42096e13.css.map",
+    "main.1af04c09.js.map": "/static/js/main.1af04c09.js.map",
+    "787.b45c6ab0.chunk.js.map": "/static/js/787.b45c6ab0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42096e13.css",
+    "static/js/main.1af04c09.js"
+  ]
+}
