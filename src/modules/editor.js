@@ -14,9 +14,9 @@ function Editor() {
   const dataText = useSelector((state) => state.cmmtSlc.LinesText);
 
   const [text, setText] = useState(dataText);
+  const [isnUnComment, setUncomment] = useState(false);
 
   function handleInputText(event) {
-    const words = event.target.value.split(" ");
     dispatcher(
       updateLine({ value: event.target.value, key: event.target.name })
     );
@@ -56,8 +56,13 @@ function Editor() {
   }
 
   useEffect(() => {
+    var count = 0;
+    Object.keys(data).map((key) => (data[key] === "" ? count++ : ""));
+
+    count >= 1 ? setUncomment(true) : setUncomment(false);
+
     setText(dataText);
-  }, [dataText]);
+  }, [dataText, data]);
 
   return (
     <div>
@@ -189,7 +194,7 @@ function Editor() {
 
                   <div
                     className={`flex flex-row gap-x-2 ${
-                      data[key].length != 0 ? "comment" : ""
+                      data[key].length !== 0 ? "comment" : ""
                     } `}>
                     <input
                       className={`focus:outline-none inputBackground w-[1rem]`}
@@ -234,7 +239,16 @@ function Editor() {
             <span className="retNCont">return</span>
             <span className="function">
               {" "}
-              View({<span className="variables">result</span>});
+              View(
+              <span
+                className={
+                  isnUnComment
+                    ? "variables"
+                    : "variables underline decoration-red-900 decoration-wavy decoration-2"
+                }>
+                result
+              </span>
+              );
             </span>
           </div>
           <div className="text-sm font-sans  ml-24 fixed top-[660px]	">

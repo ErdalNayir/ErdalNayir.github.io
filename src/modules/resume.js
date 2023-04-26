@@ -23,7 +23,7 @@ function Resume() {
           <img
             className="mt-8 mr-16 lg:transition-shadow flex-2 duration-300"
             src={require("../assets/images/photo_2021-12-29_16-26-58.jpg")}
-            alt="profile photo"
+            alt="profile "
             height={"200px"}
             width={"200px"}
           />
@@ -36,7 +36,8 @@ function Resume() {
             <img
               src={require("../assets/images/btuLogo.jpg")}
               height={"50px"}
-              width={"50px"}></img>
+              width={"50px"}
+              alt="Btu Logo"></img>
             <div>
               <p className="font-bold text-lg">
                 Bursa Technical University, Computer Engineering
@@ -53,7 +54,8 @@ function Resume() {
             <img
               src={require("../assets/images/MoskLogo.jpg")}
               height={"50px"}
-              width={"50px"}></img>
+              width={"50px"}
+              alt="Mosk Bilişim"></img>
             <div>
               <p className="font-bold text-lg">
                 MOSK Bilişim, Intern{" "}
@@ -71,7 +73,8 @@ function Resume() {
             <img
               src={require("../assets/images/tubitakLogo.png")}
               height={"50px"}
-              width={"50px"}></img>
+              width={"50px"}
+              alt="Tubitak"></img>
             <div>
               <p className="font-bold text-lg">
                 Tubitak Project, Scholarship{" "}
@@ -95,8 +98,13 @@ function Resume() {
 
           <div className="mt-4 flex flex-row gap-x-4">
             {Object.keys(imgData).map((key, index) =>
-              index < 13 ? (
-                <img src={imgData[key]} height={"30px"} width={"35px"}></img>
+              index < 12 ? (
+                <img
+                  key={key}
+                  src={imgData[key]}
+                  height={"30px"}
+                  width={"40px"}
+                  alt={key}></img>
               ) : (
                 ""
               )
@@ -104,8 +112,13 @@ function Resume() {
           </div>
           <div className="mt-4 flex flex-row gap-x-4">
             {Object.keys(imgData).map((key, index) =>
-              index >= 13 ? (
-                <img src={imgData[key]} height={"30px"} width={"35px"}></img>
+              index >= 12 ? (
+                <img
+                  key={key}
+                  src={imgData[key]}
+                  height={"30px"}
+                  width={"40px"}
+                  alt={key}></img>
               ) : (
                 ""
               )
