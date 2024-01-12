@@ -1,9 +1,9 @@
 export const urls = {
   linkedln: "https://www.linkedin.com/in/erdal-nayir-9754281b1/",
-  github: "https://github.com/ErdalNayir",
+  planlamaPro: "https://github.com/ErdalNayir/planlamapro-backend",
   cycamp:
     "https://6314e747063a091c48a88f3c--unique-kataifi-950851.netlify.app/",
-  eachecek: "https://eachecek.netlify.app/",
+  cqrsApi: "https://github.com/ErdalNayir/CQRS_Pattern_with_Identity_Docker",
   webapi: "https://github.com/ErdalNayir/Asp.Net_Core_7.0_Web_Api",
   weather: "https://erdalnayirweatherapp.netlify.app/",
   note: "https://sticknoteappbyerdal.netlify.app/",
@@ -11,7 +11,8 @@ export const urls = {
 };
 
 export const imgData = {
-  aspNet: "https://www.natmarchand.fr/wp-content/uploads/2018/05/asp.net_.jpg",
+  aspNet:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/1200px-Microsoft_.NET_logo.svg.png",
   python:
     "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png",
   javascript:

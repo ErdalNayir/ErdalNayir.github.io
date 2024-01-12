@@ -1,6 +1,8 @@
 import React from "react";
 import SideBar from "../components/sideBar";
 import Technologies from "../components/technologies";
+import Education from "../components/education";
+import Experience from "../components/experience";
 
 function Resume() {
   return (
@@ -14,77 +16,58 @@ function Resume() {
               Software Engineer Candidate
             </p>
             <div className="w-80 lg:w-full">
-              I am 3rd grade computer science student at Bursa Technical
+              I am 4th grade computer science student at Bursa Technical
               University. I love experiencing new technologies. I spend the most
               of my time with activities that improve my current skills and
               knowledge.
             </div>
           </div>
           <img
-            className="mt-8 mr-16 lg:transition-shadow lg:hidden flex-2 duration-300"
-            src={require("../assets/images/photo_2021-12-29_16-26-58.jpg")}
+            className="mt-8 mr-16 lg:transition-shadow w-[13rem] h-[13rem] lg:hidden flex-2 duration-300 md:hidden lg:hidden xl:hidden"
+            src={require("../assets/images/ProfileImg.jpg")}
             alt="profile "
-            height={"200px"}
-            width={"200px"}
           />
         </div>
         <div className="ml-4 mt-8">
           <u>
             <h2 className=" font-bold text-2xl mb-6">Education</h2>
           </u>
-          <div className="mt-4 flex flex-row gap-x-4">
-            <img
-              src={require("../assets/images/btuLogo.jpg")}
-              height={"50px"}
-              width={"50px"}
-              alt="Btu Logo"></img>
-            <div>
-              <p className="font-bold text-lg lg:text-md">
-                Bursa Technical University,
-                <span className="lg:hidden"> Computer Engineering</span>
-                <span className="hidden lg:inline"> C.E.</span>
-              </p>
-              <p className="text-gray-500">GPA: 3.42</p>
-            </div>
-          </div>
+          <Education
+            name="Bursa Technical University"
+            field="Computer Engineering"
+            abb="C.E."
+            gpa={3.42}
+            logo={require("../assets/images/btuLogo.jpg")}
+          />
         </div>
         <div className="ml-4 mt-12 mb-16">
           <u>
             <h2 className=" font-bold text-2xl mb-6">Experience</h2>
           </u>
-          <div className="mt-4 flex flex-row gap-x-4">
-            <img
-              src={require("../assets/images/MoskLogo.jpg")}
-              height={"50px"}
-              width={"50px"}
-              alt="Mosk Bilişim"></img>
-            <div>
-              <p className="font-bold text-lg">MOSK Bilişim, Intern </p>
-              <div className=" text-gray-500 indent-4 w-[36rem] lg:w-full">
-                I have created frontend side of GIS app. I have used leaflet.js,
-                react.js while creating the app
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 flex flex-row gap-x-4">
-            <img
-              src={require("../assets/images/tubitakLogo.png")}
-              height={"50px"}
-              width={"50px"}
-              alt="Tubitak"></img>
-            <div>
-              <p className="font-bold text-lg">Tubitak Project, Scholarship </p>
-              <div className=" text-gray-500 indent-4 w-[35rem] lg:w-full">
-                I am part of the project. My role in the project is creating
-                academic reports{" "}
-                <span className="lg:hidden">
-                  creating academic summarization, searching similar patents. I
-                  have been tasked with all those problem and expected to use
-                  english
-                </span>
-              </div>
-            </div>
-          </div>
+          <Experience
+            logo={require("../assets/images/MoskLogo.jpg")}
+            name="MOSK Bilişim"
+            role="Intern"
+            description="I have created frontend side of GIS app. I have used leaflet.js,
+                react.js while creating the app"
+          />
+          <Experience
+            logo={require("../assets/images/tubitakLogo.png")}
+            name="Tubitak Project"
+            role="Scholarship"
+            description=" I am part of the project. My role in the project is creating
+            academic reports"
+            detail=" creating academic summarization, searching similar patents. I
+            have been tasked with all those problem and expected to use
+            english"
+          />
+          <Experience
+            logo={require("../assets/images/ozdilekLogo.jpg")}
+            name="Özdilek Holding"
+            role="Back-end Developer"
+            description=" I have worked in R&D center of Özdilek Holding for 6 months"
+            detail=" My job is assist back-end team for TagSpot project. I have used clean architecture, CQRS, .NET, Azure Devops and so on to help my team"
+          />
         </div>
         <Technologies></Technologies>
       </div>

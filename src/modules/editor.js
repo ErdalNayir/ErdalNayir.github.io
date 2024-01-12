@@ -183,14 +183,14 @@ function Editor() {
           </div>
           <div className="text-sm font-sans fixed top-[400px] ml-36	mt-4">
             <span className="comment">
-              //To view info uncomment the only one line before press run button
+              //To view info uncomment a row below
             </span>
           </div>
           <div className="text-sm font-sans fixed top-[420px] ml-36	mt-4">
             {Object.keys(data).map((key) => {
               return (
                 <div key={key}>
-                  {key === "cycamp" ? (
+                  {key === "planlamaPro" ? (
                     <p className="comment mt-6">
                       Some of my project that you can pay a visit{" "}
                     </p>

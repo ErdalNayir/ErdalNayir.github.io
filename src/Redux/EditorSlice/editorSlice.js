@@ -5,9 +5,9 @@ export const commentSlice = createSlice({
   initialState: {
     commentLines: {
       linkedln: "//",
-      github: "//",
+      planlamaPro: "//",
       cycamp: "//",
-      eachecek: "//",
+      cqrsApi: "//",
       webapi: "//",
       weather: "//",
       note: "//",
@@ -15,9 +15,9 @@ export const commentSlice = createSlice({
     },
     LinesText: {
       linkedln: "var result = infos.linkedln",
-      github: "var result = infos.github",
+      planlamaPro: "var result = infos.planlamaPro",
       cycamp: "var result = infos.cycamp",
-      eachecek: "var result = infos.eachecek",
+      cqrsApi: "var result = infos.cqrsApi",
       webapi: "var result = infos.webapi",
       weather: "var result = infos.weather",
       note: "var result = infos.stickyNote",

@@ -12,10 +12,9 @@ function Technologies() {
         {Object.keys(imgData).map((key, index) =>
           index < 12 ? (
             <img
+              className="object-contain w-[2.6vw] h-[10vh]"
               key={key}
               src={imgData[key]}
-              height={"30px"}
-              width={"40px"}
               alt={key}></img>
           ) : (
             ""
@@ -26,10 +25,9 @@ function Technologies() {
         {Object.keys(imgData).map((key, index) =>
           index >= 12 ? (
             <img
+              className="object-contain w-[2.6vw] h-12"
               key={key}
               src={imgData[key]}
-              height={"30px"}
-              width={"40px"}
               alt={key}></img>
           ) : (
             ""
