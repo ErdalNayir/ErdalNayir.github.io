@@ -25,7 +25,8 @@ function Editor() {
   const dispatcher = useDispatch();
   const data = useSelector((state) => state.cmmtSlc.commentLines);
   const dataText = useSelector((state) => state.cmmtSlc.LinesText);
-  const eventTracker = useAnalyticsEventTracker();
+  const gaProject = useAnalyticsEventTracker("Project");
+  const gaTerminal = useAnalyticsEventTracker("Terminal");
 
   const [isUncommented, setUncommented] = useState(false);
   const [termLines, setTermLines] = useState([
@@ -91,7 +92,8 @@ function Editor() {
         },
       ]);
       setProblems(0);
-      eventTracker("url", key, "Editor_Command");
+      gaTerminal("build_succeeded", key);
+      gaProject("open_project", key);
       window.open(url, "_blank", "noreferrer");
     } else if (active.length > 1) {
       await streamAppend([
@@ -108,6 +110,7 @@ function Editor() {
         { type: "dim", text: "Time Elapsed 00:00:01.64" },
       ]);
       setProblems(active.length);
+      gaTerminal("build_failed", "CS0128_multiple_lines");
     } else {
       await streamAppend([
         { type: "dim", text: "Building...", delay: 500 },
@@ -123,6 +126,7 @@ function Editor() {
         { type: "dim", text: "Time Elapsed 00:00:01.51" },
       ]);
       setProblems(1);
+      gaTerminal("build_failed", "CS0103_no_line");
     }
 
     runningRef.current = false;
@@ -131,6 +135,7 @@ function Editor() {
 
   function handleRunButton() {
     if (runningRef.current) return;
+    gaTerminal("run_button", "dotnet run");
     setTermLines((prev) => [
       ...prev,
       { type: "cmd", text: "PS C:\\ErdalNayirResume> dotnet run" },
@@ -172,6 +177,7 @@ function Editor() {
 
     setHistory((prev) => [...prev, cmd]);
     setHistoryIndex(-1);
+    gaTerminal("command", cmd);
 
     setTermLines((prev) => [
       ...prev,

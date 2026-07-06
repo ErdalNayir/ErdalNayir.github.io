@@ -1,11 +1,15 @@
 import "./App.css";
 import Terminal from "./modules/editor";
 import Resume from "./modules/resume";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import { useEffect, useRef, useState } from "react";
 
 const TRACKING_ID = "G-966Z2T6TGE";
-ReactGA.initialize(TRACKING_ID);
+const isProduction = process.env.NODE_ENV === "production";
+
+// testMode keeps GA from sending real hits during local development,
+// so your own dev sessions don't pollute production analytics.
+ReactGA.initialize(TRACKING_ID, { testMode: !isProduction });
 
 const MOBILE_QUERY = "(min-width: 1024px)";
 
@@ -17,7 +21,10 @@ function App() {
   const draggingRef = useRef(false);
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname + window.location.search,
+    });
   }, []);
 
   useEffect(() => {

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/resumeStyles.css";
 import SideBar from "../components/sideBar";
 import Education from "../components/education";
 import Experience from "../components/experience";
+import useAnalyticsEventTracker from "../analytics/AnalyticsEventTracker";
+import { useSectionTracker, useScrollDepth } from "../analytics/pageEngagement";
 
 const skillGroups = [
   {
@@ -50,13 +52,25 @@ function SectionHeading({ children }) {
 }
 
 function Resume() {
+  const gaLink = useAnalyticsEventTracker("Project");
+
+  const scrollRef = useRef(null);
+  const introRef = useSectionTracker("Intro");
+  const techRef = useSectionTracker("Technologies");
+  const eduRef = useSectionTracker("Education");
+  const expRef = useSectionTracker("Experience");
+  useScrollDepth(() => scrollRef.current);
+
   return (
     <div className="flex h-full lg:flex-col lg:h-auto">
       <SideBar />
-      <div className="flex-1 min-h-0 overflow-y-auto lg:overflow-visible resume-scroll">
+      <div
+        ref={scrollRef}
+        className="flex-1 min-h-0 overflow-y-auto lg:overflow-visible resume-scroll"
+      >
         <div className="mx-auto w-full max-w-[900px] px-[6%] py-[7%] lg:px-6 lg:py-8">
           {/* Header */}
-          <div className="flex items-start justify-between gap-8 mb-12">
+          <div ref={introRef} className="flex items-start justify-between gap-8 mb-12">
             <div className="flex-1">
               <h1 className="cv-name">Erdal NAYİR</h1>
               <p className="cv-role mt-3">Backend Engineer</p>
@@ -74,7 +88,7 @@ function Resume() {
           </div>
 
           {/* Technologies */}
-          <section className="mb-12">
+          <section ref={techRef} className="mb-12">
             <SectionHeading>Technologies</SectionHeading>
             <div className="space-y-5">
               {skillGroups.map((group) => (
@@ -93,7 +107,7 @@ function Resume() {
           </section>
 
           {/* Education */}
-          <section className="mb-12">
+          <section ref={eduRef} className="mb-12">
             <SectionHeading>Education</SectionHeading>
             <Education
               name="Bursa Technical University"
@@ -112,7 +126,7 @@ function Resume() {
           </section>
 
           {/* Experience */}
-          <section className="mb-8">
+          <section ref={expRef} className="mb-8">
             <SectionHeading>Experience</SectionHeading>
             <Experience
               logo={require("../assets/images/ozdilekLogo.jpg")}
@@ -131,6 +145,7 @@ function Resume() {
                     href="https://github.com/ErdalNayir/xAI-Methods"
                     target="_blank"
                     rel="noreferrer"
+                    onClick={() => gaLink("open_repo", "xAI-Methods")}
                   >
                     xAI-Methods
                   </a>
