@@ -1,10 +1,10 @@
 import "./App.css";
-import Editor from "./modules/editor";
+import Terminal from "./modules/editor";
 import Resume from "./modules/resume";
 import ReactGA from "react-ga";
 import { useEffect } from "react";
 
-const TRACKING_ID = "G-966Z2T6TGE"; // OUR_TRACKING_ID
+const TRACKING_ID = "G-966Z2T6TGE";
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
@@ -13,9 +13,13 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <Resume></Resume>
-      <Editor></Editor>
+    <div className="flex h-screen overflow-hidden lg:flex-col lg:h-auto lg:overflow-auto">
+      <div className="w-1/2 h-full overflow-hidden lg:w-full lg:h-auto lg:overflow-visible">
+        <Resume />
+      </div>
+      <div className="w-1/2 h-full overflow-hidden lg:w-full lg:h-[600px]">
+        <Terminal />
+      </div>
     </div>
   );
 }

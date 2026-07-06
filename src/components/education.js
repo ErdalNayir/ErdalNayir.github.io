@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Education({ name, field, abb, gpa, logo }) {
+function Education({ name, field, gpa, date, logo }) {
   return (
-    <div className="mt-4 flex flex-row gap-x-4 ">
-      <img className="object-contain h-14 w-14" src={logo} alt="Btu Logo"></img>
+    <div className="mt-5 flex flex-row gap-x-4">
+      <img className="cv-logo flex-shrink-0" src={logo} alt="university logo" />
       <div>
-        <p className="font-bold text-lg lg:text-md">
-          {name},<span className="lg:hidden"> {field}</span>
-          <span className="hidden lg:inline"> {abb}</span>
+        <p className="cv-exp-title">
+          {name}, <span className="cv-exp-role">{field}</span>
         </p>
-        <p className="text-gray-500">GPA: {gpa}</p>
+        {date && <p className="cv-exp-date mt-0.5">{date}</p>}
+        <p className="cv-exp-desc mt-1">GPA: {gpa}</p>
       </div>
     </div>
   );
@@ -19,9 +19,9 @@ function Education({ name, field, abb, gpa, logo }) {
 Education.propTypes = {
   name: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
-  abb: PropTypes.string.isRequired,
-  gpa: PropTypes.number.isRequired,
-  logo: PropTypes.isRequired,
+  gpa: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  date: PropTypes.string,
+  logo: PropTypes.any.isRequired,
 };
 
 export default Education;

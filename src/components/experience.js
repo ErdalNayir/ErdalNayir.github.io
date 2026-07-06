@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Experience({ name, role, description, logo, detail }) {
+function Experience({ name, role, bullets, logo, date }) {
   return (
-    <div className="mt-8 flex flex-row gap-x-4">
-      <img
-        className="object-contain h-14 w-14"
-        src={logo}
-        alt="logo image"></img>
-      <div>
-        <p className="font-bold text-lg">
-          {name}, {role}
+    <div className="mt-7 flex flex-row gap-x-4">
+      <img className="cv-logo flex-shrink-0" src={logo} alt="company logo" />
+      <div className="min-w-0">
+        <p className="cv-exp-title">
+          {name}, <span className="cv-exp-role">{role}</span>
         </p>
-        <div className=" text-gray-500 indent-4 w-[36vw] lg:w-full">
-          {description}
-          <span className="lg:hidden">{detail}</span>
-        </div>
+        {date && <p className="cv-exp-date mt-0.5">{date}</p>}
+        <ul className="cv-exp-list mt-2">
+          {bullets.map((item, i) => (
+            <li key={i} className="cv-exp-desc">
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
@@ -24,9 +25,9 @@ function Experience({ name, role, description, logo, detail }) {
 Experience.propTypes = {
   name: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  logo: PropTypes.isRequired,
-  detail: PropTypes.string,
+  bullets: PropTypes.arrayOf(PropTypes.node).isRequired,
+  logo: PropTypes.any.isRequired,
+  date: PropTypes.string,
 };
 
 export default Experience;

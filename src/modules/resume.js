@@ -1,75 +1,174 @@
 import React from "react";
+import "../styles/resumeStyles.css";
 import SideBar from "../components/sideBar";
-import Technologies from "../components/technologies";
 import Education from "../components/education";
 import Experience from "../components/experience";
 
+const skillGroups = [
+  {
+    label: "Backend",
+    skills: [".NET Core", "FastAPI", "Python", "ASP.NET", "Entity Framework"],
+  },
+  {
+    label: "AI / RAG",
+    skills: [
+      "vLLM",
+      "HuggingFace",
+      "Whisper",
+      "Qwen",
+      "GLM-OCR",
+      "Weaviate",
+      "Milvus",
+      "NeMo Guardrails",
+    ],
+  },
+  {
+    label: "Edge AI",
+    skills: ["Jetson Nano", "Jetson Orin Nano", "Jetson Orin NX", "RunPod"],
+  },
+  {
+    label: "Infra",
+    skills: ["Docker", "Kubernetes", "Minio", "Redis", "RabbitMQ", "Consul"],
+  },
+  {
+    label: "Database",
+    skills: ["PostgreSQL", "SQLAlchemy", "MSSQL"],
+  },
+  {
+    label: "Frontend",
+    skills: ["Angular", "React.js", "Flutter", "JavaScript"],
+  },
+];
+
+function SectionHeading({ children }) {
+  return (
+    <div className="flex items-center gap-4 mb-6">
+      <h2 className="cv-h2 whitespace-nowrap">{children}</h2>
+      <div className="cv-divider" />
+    </div>
+  );
+}
+
 function Resume() {
   return (
-    <div className="flex flex-row overflow-hidden	">
-      <SideBar></SideBar>
-      <div className="ml-16 lg:mt-8 lg:ml-0">
-        <div className="flex flex-row  gap-x-32  lg:transition-shadow  duration-300">
-          <div className="mt-16 ml-4  lg:transition-shadow flex-1 duration-300">
-            <h2 className="text-4xl ">Erdal NAYİR</h2>
-            <p className="font-bold mt-4 mb-2 text-sm">
-              Software Engineer Candidate
-            </p>
-            <div className="w-80 lg:w-full">
-              I am 4th grade computer science student at Bursa Technical
-              University. I love experiencing new technologies. I spend the most
-              of my time with activities that improve my current skills and
-              knowledge.
+    <div className="flex h-full lg:flex-col lg:h-auto">
+      <SideBar />
+      <div className="flex-1 min-h-0 overflow-y-auto lg:overflow-visible resume-scroll">
+        <div className="mx-auto w-full max-w-[900px] px-[6%] py-[7%] lg:px-6 lg:py-8">
+          {/* Header */}
+          <div className="flex items-start justify-between gap-8 mb-12">
+            <div className="flex-1">
+              <h1 className="cv-name">Erdal NAYİR</h1>
+              <p className="cv-role mt-3">Backend Engineer</p>
+              <p className="cv-body mt-5 max-w-[36ch]">
+                Backend engineer specialized in .NET and Python. I design and
+                ship containerized microservices and production AI systems, with
+                a strong focus on clean architecture and developer tooling.
+              </p>
             </div>
+            <img
+              className="rounded-2xl object-cover flex-shrink-0 shadow-md w-[clamp(6rem,9vw,11rem)] h-[clamp(6rem,9vw,11rem)] lg:hidden"
+              src={require("../assets/images/ProfileImg.jpg")}
+              alt="Erdal Nayir"
+            />
           </div>
-          <img
-            className="mt-8 mr-16 lg:transition-shadow w-[13rem] h-[13rem] lg:hidden flex-2 duration-300 md:hidden lg:hidden xl:hidden"
-            src={require("../assets/images/ProfileImg.jpg")}
-            alt="profile "
-          />
+
+          {/* Technologies */}
+          <section className="mb-12">
+            <SectionHeading>Technologies</SectionHeading>
+            <div className="space-y-5">
+              {skillGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="cv-label mb-2">{group.label}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill) => (
+                      <span key={skill} className="skill-chip">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Education */}
+          <section className="mb-12">
+            <SectionHeading>Education</SectionHeading>
+            <Education
+              name="Bursa Technical University"
+              field="M.Sc. Computer Science"
+              gpa={3.64}
+              date="Oct 2024 - Present"
+              logo={require("../assets/images/btuLogo.jpg")}
+            />
+            <Education
+              name="Bursa Technical University"
+              field="B.Sc. Computer Engineering"
+              gpa={3.42}
+              date="2020 - 2024"
+              logo={require("../assets/images/btuLogo.jpg")}
+            />
+          </section>
+
+          {/* Experience */}
+          <section className="mb-8">
+            <SectionHeading>Experience</SectionHeading>
+            <Experience
+              logo={require("../assets/images/ozdilekLogo.jpg")}
+              name="Özdilek Holding"
+              role="Backend Developer"
+              date="May 2024 - Present"
+              bullets={[
+                "AI-focused backend services with FastAPI and .NET, deploying models on Jetson Nano / Orin Nano / Orin NX for edge inference.",
+                "Built a face-recognition payment service, OCR (GLM-OCR on vLLM), Whisper transcription over RabbitMQ, and a RAG API (Qwen + Weaviate, RunPod GPU, NeMo Guardrails).",
+                "Containerized service infrastructure with Docker — Minio, Milvus, Weaviate, Redis, PostgreSQL, RabbitMQ, PyTorch/CUDA environments and OpenSearch for logging.",
+                <>
+                  Developed explainability for services using xAI methods (LIME,
+                  SHAP, etc.) on company data —{" "}
+                  <a
+                    className="cv-link"
+                    href="https://github.com/ErdalNayir/xAI-Methods"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    xAI-Methods
+                  </a>
+                  .
+                </>,
+                "Authored and published a Python/FastAPI helper library (Redis, Consul, RabbitMQ, SQLAlchemy) to the GitHub registry via CI/CD.",
+              ]}
+            />
+            <Experience
+              logo={require("../assets/images/ozdilekLogo.jpg")}
+              name="Özdilek Holding"
+              role="Backend Developer Intern"
+              date="Aug 2023 - Jan 2024"
+              bullets={[
+                "R&D Center — TagSpot project.",
+                "Clean Architecture, CQRS, .NET, Fluent Validation, Mediatr and SignalR.",
+              ]}
+            />
+            <Experience
+              logo={require("../assets/images/tubitakLogo.png")}
+              name="TÜBİTAK"
+              role="Scholarship Holder"
+              date="Feb 2023 - Dec 2023"
+              bullets={[
+                "Academic NLP — patent similarity search and academic report summarization.",
+              ]}
+            />
+            <Experience
+              logo={require("../assets/images/MoskLogo.jpg")}
+              name="MOSK Bilişim"
+              role="Frontend Intern"
+              date="Jul 2022 - Aug 2022"
+              bullets={[
+                "Built the frontend of a GIS route-sharing app with React.js and Leaflet.js.",
+              ]}
+            />
+          </section>
         </div>
-        <div className="ml-4 mt-8">
-          <u>
-            <h2 className=" font-bold text-2xl mb-6">Education</h2>
-          </u>
-          <Education
-            name="Bursa Technical University"
-            field="Computer Engineering"
-            abb="C.E."
-            gpa={3.42}
-            logo={require("../assets/images/btuLogo.jpg")}
-          />
-        </div>
-        <div className="ml-4 mt-12 mb-16">
-          <u>
-            <h2 className=" font-bold text-2xl mb-6">Experience</h2>
-          </u>
-          <Experience
-            logo={require("../assets/images/MoskLogo.jpg")}
-            name="MOSK Bilişim"
-            role="Intern"
-            description="I have created frontend side of GIS app. I have used leaflet.js,
-                react.js while creating the app"
-          />
-          <Experience
-            logo={require("../assets/images/tubitakLogo.png")}
-            name="Tubitak Project"
-            role="Scholarship"
-            description=" I am part of the project. My role in the project is creating
-            academic reports"
-            detail=" creating academic summarization, searching similar patents. I
-            have been tasked with all those problem and expected to use
-            english"
-          />
-          <Experience
-            logo={require("../assets/images/ozdilekLogo.jpg")}
-            name="Özdilek Holding"
-            role="Back-end Developer"
-            description=" I have worked in R&D center of Özdilek Holding for 6 months"
-            detail=" My job is assist back-end team for TagSpot project. I have used clean architecture, CQRS, .NET, Azure Devops and so on to help my team"
-          />
-        </div>
-        <Technologies></Technologies>
       </div>
     </div>
   );
