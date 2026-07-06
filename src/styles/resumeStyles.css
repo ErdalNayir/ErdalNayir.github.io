@@ -17,17 +17,31 @@
   transform: translateY(-2px);
 }
 
+/* ─── Split gutter (drag to resize) ──────────────────── */
+.split-gutter {
+  width: 6px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: #e2e8f0;
+  transition: background 0.15s;
+}
+
+.split-gutter:hover {
+  background: #22d3ee;
+}
+
 /* ─── Resume scroll area ─────────────────────────────── */
 .resume-scroll {
   background: #ffffff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   color: #1e293b;
+  container-type: inline-size;
 }
 
-/* ─── Fluid typography (scales with viewport) ─────────── */
+/* ─── Fluid typography (scales with the panel width) ──── */
 .cv-name {
-  font-size: clamp(1.9rem, 2.6vw, 3.2rem);
+  font-size: clamp(1.9rem, 5.2cqi, 3.2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -35,7 +49,7 @@
 }
 
 .cv-role {
-  font-size: clamp(0.85rem, 1vw, 1.25rem);
+  font-size: clamp(0.85rem, 2cqi, 1.25rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -43,20 +57,20 @@
 }
 
 .cv-body {
-  font-size: clamp(0.95rem, 1.05vw, 1.3rem);
+  font-size: clamp(0.95rem, 2.1cqi, 1.3rem);
   line-height: 1.6;
   color: #475569;
 }
 
 .cv-h2 {
-  font-size: clamp(1.15rem, 1.5vw, 1.9rem);
+  font-size: clamp(1.15rem, 3cqi, 1.9rem);
   font-weight: 700;
   color: #0f172a;
   letter-spacing: -0.01em;
 }
 
 .cv-label {
-  font-size: clamp(0.8rem, 0.9vw, 1.05rem);
+  font-size: clamp(0.8rem, 1.8cqi, 1.05rem);
   font-weight: 600;
   color: #94a3b8;
   text-transform: uppercase;
@@ -64,25 +78,25 @@
 }
 
 .cv-exp-title {
-  font-size: clamp(1.05rem, 1.2vw, 1.5rem);
+  font-size: clamp(1.05rem, 2.4cqi, 1.5rem);
   font-weight: 700;
   color: #1e293b;
 }
 
 .cv-exp-role {
-  font-size: clamp(0.85rem, 0.95vw, 1.15rem);
+  font-size: clamp(0.85rem, 1.9cqi, 1.15rem);
   font-weight: 600;
   color: #0891b2;
 }
 
 .cv-exp-date {
-  font-size: clamp(0.78rem, 0.85vw, 1rem);
+  font-size: clamp(0.78rem, 1.7cqi, 1rem);
   color: #94a3b8;
   font-weight: 500;
 }
 
 .cv-exp-desc {
-  font-size: clamp(0.9rem, 1vw, 1.2rem);
+  font-size: clamp(0.9rem, 2cqi, 1.2rem);
   line-height: 1.55;
   color: #64748b;
 }
@@ -131,7 +145,7 @@
 
 /* ─── Skill chips ────────────────────────────────────── */
 .skill-chip {
-  font-size: clamp(0.78rem, 0.85vw, 1rem);
+  font-size: clamp(0.78rem, 1.7cqi, 1rem);
   font-weight: 500;
   padding: 0.35em 0.9em;
   border-radius: 9999px;
@@ -151,7 +165,7 @@
 /* ─── Logo tiles ─────────────────────────────────────── */
 .cv-logo {
   object-fit: contain;
-  width: clamp(2.75rem, 3.2vw, 3.75rem);
-  height: clamp(2.75rem, 3.2vw, 3.75rem);
+  width: clamp(2.75rem, 6.4cqi, 3.75rem);
+  height: clamp(2.75rem, 6.4cqi, 3.75rem);
   border-radius: 0.5rem;
 }

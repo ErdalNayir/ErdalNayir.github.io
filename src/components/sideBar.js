@@ -41,6 +41,22 @@ function SideBar() {
       <a href="mailto:erdal.nayir2001@gmail.com" className="sidebar-icon">
         <Icon icon="ic:outline-email" color="white" fontSize={24} />
       </a>
+      <a
+        href="https://orcid.org/0009-0007-9514-9463"
+        target="_blank"
+        rel="noreferrer"
+        className="sidebar-icon"
+      >
+        <Icon icon="simple-icons:orcid" color="white" fontSize={22} />
+      </a>
+      <a
+        href="https://www.researchgate.net/profile/Erdal-Nayir-2"
+        target="_blank"
+        rel="noreferrer"
+        className="sidebar-icon"
+      >
+        <Icon icon="simple-icons:researchgate" color="white" fontSize={22} />
+      </a>
     </div>
   );
 }
