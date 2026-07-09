@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import ReactGA from "react-ga4";
 
 // Tracks when a section scrolls into view and how long it stays visible.
-// Sends: Section/view (once) and Section/dwell_seconds (on exit/unmount).
+// Sends: section_view (once) and section_dwell (on exit/unmount).
 export function useSectionTracker(name) {
   const ref = useRef(null);
   const enteredAt = useRef(null);
@@ -17,12 +17,7 @@ export function useSectionTracker(name) {
         const secs = Math.round((Date.now() - enteredAt.current) / 1000);
         enteredAt.current = null;
         if (secs > 0) {
-          ReactGA.event({
-            category: "Section",
-            action: "dwell_seconds",
-            label: name,
-            value: secs,
-          });
+          ReactGA.event("section_dwell", { section_name: name, seconds: secs });
         }
       }
     };
@@ -33,7 +28,7 @@ export function useSectionTracker(name) {
           enteredAt.current = Date.now();
           if (!viewSent.current) {
             viewSent.current = true;
-            ReactGA.event({ category: "Section", action: "view", label: name });
+            ReactGA.event("section_view", { section_name: name });
           }
         } else {
           flushDwell();
@@ -70,12 +65,7 @@ export function useScrollDepth(getScroller) {
       [25, 50, 75, 100].forEach((milestone) => {
         if (pct >= milestone && !sent.current.has(milestone)) {
           sent.current.add(milestone);
-          ReactGA.event({
-            category: "Scroll",
-            action: "depth",
-            label: `${milestone}%`,
-            value: milestone,
-          });
+          ReactGA.event("scroll_depth", { percent: milestone });
         }
       });
     };
